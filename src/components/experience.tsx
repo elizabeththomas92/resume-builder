@@ -2,7 +2,9 @@ import React from "react";
 
 function Experience() {
   // States
-  const [skills, setSkills] = React.useState(["New skill"]);
+  const [achievements, setAchievements] = React.useState([
+    "List responsibility here",
+  ]);
   return (
     <div className="flex flex-col p-3">
       <h1 className=" uppercase">Experience</h1>
@@ -49,7 +51,25 @@ function Experience() {
           </label>
         </div>
         {/* Work Achievements */}
-        <div></div>
+        <div>
+          <div>Achievements</div>
+          <div>
+            {achievements.map((achievement) => (
+              <li contentEditable="true" className="text-base outline-none">
+                {achievement}
+              </li>
+            ))}
+          </div>
+          <button
+            onClick={() =>
+              setAchievements([...achievements, "List responsibility here"])
+            }
+            className="text-xs font-semibold inline-block py-1 px-2 rounded text-blue-500 uppercase last:mr-0 mr-1"
+          >
+            + Add Achievement
+          </button>
+          <div></div>
+        </div>
       </div>
     </div>
   );
