@@ -1,10 +1,23 @@
 import React from "react";
+const defaultAchievement = "List responsibility here";
 
+const defaultExperience = {
+  title: "Title/Position",
+  company: "Company Name",
+  date: {
+    startDay: "",
+    startMonth: "",
+    endDay: "",
+    endMonth: "",
+    isCurrent: false,
+  },
+  achievements: [defaultAchievement],
+};
 function Experience() {
   // States
-  const [achievements, setAchievements] = React.useState([
-    "List responsibility here",
-  ]);
+
+  const [experiences, setExperiences] = React.useState([defaultExperience]);
+
   return (
     <div className="flex flex-col p-3">
       <h1 className=" uppercase">Experience</h1>
@@ -54,7 +67,7 @@ function Experience() {
         <div>
           <div>Achievements</div>
           <div>
-            {achievements.map((achievement) => (
+            {experiences.achievements.map((achievement) => (
               <li contentEditable="true" className="text-base outline-none">
                 {achievement}
               </li>
@@ -62,7 +75,15 @@ function Experience() {
           </div>
           <button
             onClick={() =>
-              setAchievements([...achievements, "List responsibility here"])
+              setExperiences([
+                ...experiences,
+                {
+                  achievements: [
+                    ...experiences.achievements,
+                    defaultAchievement,
+                  ],
+                },
+              ])
             }
             className="text-xs font-semibold inline-block py-1 px-2 rounded text-blue-500 uppercase last:mr-0 mr-1"
           >
@@ -70,6 +91,14 @@ function Experience() {
           </button>
           <div></div>
         </div>
+      </div>
+      <div>
+        <button
+          onClick={() => setExperiences([...experiences, defaultExperience])}
+          className="text-xs font-semibold inline-block py-1 px-2 rounded text-blue-500 uppercase last:mr-0 mr-1"
+        >
+          + Add Experience
+        </button>
       </div>
     </div>
   );
