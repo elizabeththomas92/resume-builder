@@ -1,4 +1,5 @@
 import React from "react";
+import Education from "./education";
 import Experience from "./experience";
 import MainHeader from "./mainHeader";
 import Skills from "./skills";
@@ -9,6 +10,7 @@ function Resume() {
       <MainHeader />
       <Skills />
       <Experience />
+      <Education />
     </div>
   );
 }
