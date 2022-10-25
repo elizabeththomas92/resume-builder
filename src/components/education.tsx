@@ -1,4 +1,5 @@
 import React from "react";
+import { Delete } from "@styled-icons/fluentui-system-regular/Delete";
 
 const defaultEducation = {
   degree: "DEGREE",
@@ -14,19 +15,29 @@ function Education() {
     defaultEducation,
   ]);
 
+  // Functions
+
+  function removeEducation(index: number) {}
+
   return (
     <div className="flex flex-col p-3">
       <h1 className=" uppercase">Education</h1>
       <div>
         <div>
-          {educationDetails.map((education: any) => (
+          {educationDetails.map((education: any, index) => (
             <>
-              <h1
-                contentEditable="true"
-                className="font-medium text-xl outline-none"
-              >
-                {education.degree}
-              </h1>
+              <div className="group">
+                <h1
+                  contentEditable="true"
+                  className="font-medium text-xl outline-none"
+                >
+                  {" "}
+                  {education.degree}
+                </h1>
+                <span className='tooltip-text bg-blue-100 p-3 -mt-16 -ml-6 rounded hidden group-hover:block absolute text-center py-2 px-6 z-50"'>
+                  <Delete size={12} onClick={() => removeEducation(index)} />
+                </span>
+              </div>
               <h1 contentEditable="true" className="font-medium  outline-none">
                 {education.university}
               </h1>
