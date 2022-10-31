@@ -17,7 +17,17 @@ function Education() {
 
   // Functions
 
-  function removeEducation(index: number) {}
+  function removeEducation(index: number) {
+    console.log("index", index);
+    let educationArray = [...educationDetails];
+    educationArray.splice(index, 1);
+
+    setEducationDetails(educationArray);
+  }
+
+  function onHandleInputChange(key: string, value: string) {
+  setEducationDetails([...educationDetails, [key]:value]);
+  }
 
   return (
     <div className="flex flex-col p-3">
@@ -30,6 +40,9 @@ function Education() {
                 <h1
                   contentEditable="true"
                   className="font-medium text-xl outline-none"
+                  onChange={(e: any) =>
+                    onHandleInputChange("degree", e.target.value)
+                  }
                 >
                   {" "}
                   {education.degree}
@@ -38,7 +51,13 @@ function Education() {
                   <Delete size={12} onClick={() => removeEducation(index)} />
                 </span>
               </div>
-              <h1 contentEditable="true" className="font-medium  outline-none">
+              <h1
+                contentEditable="true"
+                className="font-medium  outline-none"
+                onChange={(e: any) =>
+                  onHandleInputChange("university", e.target.value)
+                }
+              >
                 {education.university}
               </h1>
               {/* Date */}
@@ -49,6 +68,9 @@ function Education() {
                   type="text"
                   className="w-[44px]  border-b-2 border-dashed"
                   maxLength={4}
+                  onChange={(e: any) =>
+                    onHandleInputChange("fromYear", e.target.value)
+                  }
                 ></input>
                 <span className="mx-2">-</span>
                 {/* To Date */}
@@ -57,6 +79,9 @@ function Education() {
                   type="text"
                   className="w-[44px]  border-b-2 border-dashed"
                   maxLength={4}
+                  onChange={(e: any) =>
+                    onHandleInputChange("toYear", e.target.value)
+                  }
                 ></input>
                 <label>
                   <input type="checkbox" name="html" value="html" /> Present
