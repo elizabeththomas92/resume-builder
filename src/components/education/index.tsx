@@ -9,15 +9,13 @@ interface IEducation {
 }
 
 const defaultEducation: IEducation = {
-  degree: "DEGREE",
-  university: "University",
+  degree: "",
+  university: "",
   fromYear: "",
   toYear: "",
 };
 
 function Education() {
-  const ref = useRef<HTMLDivElement>(null);
-
   // States
 
   const [educationDetails, setEducationDetails] = React.useState<IEducation[]>([
@@ -27,26 +25,27 @@ function Education() {
   // Functions
 
   function addEducation() {
-    let temp = [...educationDetails];
-    temp.push(defaultEducation);
-    console.log("temp", temp, defaultEducation);
-    setEducationDetails(temp);
+    setEducationDetails([
+      ...educationDetails,
+      {
+        degree: "",
+        university: "",
+        fromYear: "",
+        toYear: "",
+      },
+    ]);
   }
 
   function removeEducation(index: number) {
     let educationArray = [...educationDetails];
-    educationArray[index] = defaultEducation;
-    console.log("before", educationArray);
     educationArray.splice(index, 1);
-    console.log("after", educationArray);
     setEducationDetails(educationArray);
   }
 
   function onHandleInputChange(key: string, value: string, index: number) {
-    const educationDetailsArray: any = [...educationDetails];
+    let educationDetailsArray: any = [...educationDetails];
 
     educationDetailsArray[index][key] = value;
-    console.log("here", educationDetailsArray[index][key], key, value, index);
     setEducationDetails(educationDetailsArray);
   }
   return (
@@ -55,12 +54,14 @@ function Education() {
       <div>
         <div>
           {educationDetails.map((education, index) => (
-            <div key={`education-${index}`} className="mt-3">
+            <div className="mt-3">
               <div className="group">
                 <input
                   type="text"
                   className="border-b-2 border-dashed font-medium outline-none"
                   placeholder={"DEGREE"}
+                  key={`degree-${index}`}
+                  value={education.degree}
                   onChange={(e: any) =>
                     onHandleInputChange("degree", e.target.value, index)
                   }
@@ -73,6 +74,8 @@ function Education() {
                 type="text"
                 className="border-b-2 border-dashed font-medium outline-none"
                 placeholder={"UNIVERSITY"}
+                key={`university-${index}`}
+                value={education.university}
                 onChange={(e: any) =>
                   onHandleInputChange("university", e.target.value, index)
                 }
