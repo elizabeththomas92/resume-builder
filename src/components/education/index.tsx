@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { Delete } from "@styled-icons/fluentui-system-regular/Delete";
+import { useSelector, useDispatch } from "react-redux";
 
 interface IEducation {
   degree: string;
@@ -8,52 +9,39 @@ interface IEducation {
   toYear: string;
 }
 
-const defaultEducation: IEducation = {
-  degree: "",
-  university: "",
-  fromYear: "",
-  toYear: "",
-};
-
 function Education() {
-  // States
+  // Redux
 
-  const [educationDetails, setEducationDetails] = React.useState<IEducation[]>([
-    defaultEducation,
-  ]);
-
+  const dispatch = useDispatch();
+  const educationDetails = useSelector((state: any) => state.educationReducer);
   // Functions
 
   function addEducation() {
-    setEducationDetails([
-      ...educationDetails,
-      {
-        degree: "",
-        university: "",
-        fromYear: "",
-        toYear: "",
-      },
-    ]);
+    dispatch({
+      type: "ADD_EDUCATION",
+      payload: educationDetails,
+    });
   }
 
   function removeEducation(index: number) {
-    let educationArray = [...educationDetails];
-    educationArray.splice(index, 1);
-    setEducationDetails(educationArray);
+    dispatch({
+      type: "REMOVE_EDUCATION",
+      payload: { data: educationDetails, index: index },
+    });
   }
 
   function onHandleInputChange(key: string, value: string, index: number) {
-    let educationDetailsArray: any = [...educationDetails];
-
-    educationDetailsArray[index][key] = value;
-    setEducationDetails(educationDetailsArray);
+    dispatch({
+      type: "UPDATE_EDUCATION",
+      payload: { data: educationDetails, index: index, key: key, value: value },
+    });
   }
   return (
     <div className="flex flex-col p-3">
       <h1 className=" uppercase">Education</h1>
       <div>
         <div>
-          {educationDetails.map((education, index) => (
+          {educationDetails.map((education: any, index: number) => (
             <div className="mt-3">
               <div className="group">
                 <input
