@@ -1,10 +1,13 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Achievement from "./achievement";
+import { Delete } from "@styled-icons/fluentui-system-regular/Delete";
+
 const defaultAchievement = "List responsibility here";
 
 const defaultExperience = {
-  title: "Title/Position",
-  company: "Company Name",
+  title: "",
+  company: "",
   date: {
     startDay: "",
     startMonth: "",
@@ -17,22 +20,78 @@ const defaultExperience = {
 function Experience() {
   // States
 
-  const [experiences, setExperiences] = React.useState([defaultExperience]);
+  // const [experiences, setExperiences] = React.useState([defaultExperience]);
+
+  // Redux
+
+  const dispatch = useDispatch();
+  const experiences = useSelector((state: any) => state.experienceReducer);
+
+  // Functions
+  function addExperience() {
+    dispatch({
+      type: "ADD_EXPERIENCE",
+      payload: defaultExperience,
+    });
+  }
+
+  function removeExperience(index: number) {
+    dispatch({
+      type: "REMOVE_EXPERIENCE",
+      payload: { data: experiences, index: index },
+    });
+  }
+  function onHandleInputChange(key: string, value: string, index: number) {
+    dispatch({
+      type: "UPDATE_EXPERIENCE",
+      payload: {
+        data: experiences,
+        index: index,
+        key: key,
+        value: value,
+      },
+    });
+  }
 
   return (
     <div className="flex flex-col p-3">
       <h1 className=" uppercase">Experience</h1>
-      {experiences.map((experience) => (
+      {experiences?.map((experience: any, index: number) => (
         <div>
-          <h1
-            contentEditable="true"
-            className="font-medium text-xl outline-none"
-          >
-            {experience.title}
-          </h1>
-          <h1 contentEditable="true" className="font-medium  outline-none">
+          <div className="group">
+            {/* <h1
+              contentEditable="true"
+              className="font-medium text-xl outline-none"
+            >
+              {experience.title}
+            </h1> */}
+            <input
+              type="text"
+              className="font-medium text-xl outline-none"
+              placeholder={"Title/Position"}
+              key={`title-${index}`}
+              value={experience.title}
+              onChange={(e: any) =>
+                onHandleInputChange("title", e.target.value, index)
+              }
+            ></input>
+            <span className='tooltip-text bg-blue-100 p-3 -mt-16 -ml-6 rounded hidden group-hover:block absolute text-center py-2 px-6 z-50"'>
+              <Delete size={12} onClick={() => removeExperience(index)} />
+            </span>
+          </div>
+          {/* <h1 contentEditable="true" className="font-medium  outline-none">
             {experience.company}
-          </h1>
+          </h1> */}
+          <input
+            type="text"
+            className="font-medium  outline-none"
+            placeholder={"Company Name"}
+            key={`company-${index}`}
+            value={experience.company}
+            onChange={(e: any) =>
+              onHandleInputChange("company", e.target.value, index)
+            }
+          ></input>
           {/* Date */}
           <div className="flex gap-1">
             {/* from Date */}
@@ -75,7 +134,7 @@ function Experience() {
 
       <div>
         <button
-          onClick={() => setExperiences([...experiences, defaultExperience])}
+          onClick={addExperience}
           className="text-xs font-semibold inline-block py-1 px-2 rounded text-blue-500 uppercase last:mr-0 mr-1"
         >
           + Add Experience
