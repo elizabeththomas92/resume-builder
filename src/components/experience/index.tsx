@@ -31,7 +31,7 @@ function Experience() {
   function addExperience() {
     dispatch({
       type: "ADD_EXPERIENCE",
-      payload: defaultExperience,
+      payload: experiences,
     });
   }
 
@@ -67,7 +67,7 @@ function Experience() {
             </h1> */}
             <input
               type="text"
-              className="font-medium text-xl outline-none"
+              className="font-medium text-xl outline-none focus:bg-blue-100 focus:rounded-md focus:px-1"
               placeholder={"Title/Position"}
               key={`title-${index}`}
               value={experience.title}
@@ -84,7 +84,7 @@ function Experience() {
           </h1> */}
           <input
             type="text"
-            className="font-medium  outline-none"
+            className="font-medium outline-none focus:bg-blue-100 focus:rounded-md focus:px-1"
             placeholder={"Company Name"}
             key={`company-${index}`}
             value={experience.company}
@@ -99,13 +99,13 @@ function Experience() {
               type="text"
               placeholder="mm"
               maxLength={2}
-              className="w-[44px]  border-b-2 border-dashed"
+              className="w-[44px]  border-b-2 border-dashed focus:outline-none focus:bg-blue-100 focus:rounded-md focus:px-1"
             ></input>
             <span>/</span>
             <input
               placeholder="yyyy"
               type="text"
-              className="w-[44px]  border-b-2 border-dashed"
+              className="w-[44px]  border-b-2 border-dashed focus:outline-none focus:bg-blue-100 focus:rounded-md focus:px-1"
               maxLength={4}
             ></input>
             <span className="mx-2">-</span>
@@ -114,13 +114,13 @@ function Experience() {
               type="text"
               placeholder="mm"
               maxLength={2}
-              className="w-[44px]  border-b-2 border-dashed"
+              className="w-[44px]  border-b-2 border-dashed focus:outline-none focus:bg-blue-100 focus:rounded-md focus:px-1"
             ></input>
             <span>/</span>
             <input
               placeholder="yyyy"
               type="text"
-              className="w-[44px]  border-b-2 border-dashed"
+              className="w-[44px]  border-b-2 border-dashed focus:outline-none focus:bg-blue-100 focus:rounded-md focus:px-1"
               maxLength={4}
             ></input>
             <label>

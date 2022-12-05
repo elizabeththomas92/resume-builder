@@ -14,7 +14,10 @@ function Achievement(props: { data: string[] }) {
         <div>Achievements</div>
         <div>
           {achievements?.map((achievement) => (
-            <li contentEditable="true" className="text-base outline-none">
+            <li
+              contentEditable="true"
+              className="text-base outline-none focus:bg-blue-100 focus:rounded-md px-1"
+            >
               {achievement}
             </li>
           ))}
