@@ -57,7 +57,7 @@ function MainHeader() {
           <input
             type="text"
             className="border-b-2 border-dashed font-medium outline-none focus:bg-blue-100 focus:rounded-md px-1"
-            placeholder="Github Link"
+            placeholder="github link"
             key={"github"}
             value={introductionDetails.github}
             onChange={(e: any) => onHandleInputChange("github", e.target.value)}
@@ -69,7 +69,7 @@ function MainHeader() {
           <input
             type="text"
             className="border-b-2 border-dashed font-medium outline-none focus:bg-blue-100 focus:rounded-md px-1"
-            placeholder="Linkedin Link"
+            placeholder="linkedin link"
             key={"linkedin"}
             value={introductionDetails.linkedin}
             onChange={(e: any) =>
