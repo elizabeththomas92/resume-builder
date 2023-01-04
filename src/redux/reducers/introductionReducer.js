@@ -13,7 +13,6 @@ export const introductionReducer = (state = initialState, action) => {
       let introductionDetails = { ...state };
 
       introductionDetails[action.payload.key] = action.payload.value;
-      console.log("introductionDetails", introductionDetails);
       return introductionDetails;
 
     default:

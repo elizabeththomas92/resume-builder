@@ -4,12 +4,10 @@ import MainLayout from "../layouts/MainLayout";
 
 function Builder() {
   return (
-    <div>
-      <MainLayout>
-        <LeftSideBar />
-        <Resume />
-      </MainLayout>
-    </div>
+    <MainLayout>
+      {/* <LeftSideBar /> */}
+      <Resume />
+    </MainLayout>
   );
 }
 

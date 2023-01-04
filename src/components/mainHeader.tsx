@@ -26,25 +26,27 @@ function MainHeader() {
   return (
     <div className="border border-blue-400 h-[200px] flex justify-between p-3">
       <div className="p-4 flex flex-col">
+        <div>
+          <input
+            type="text"
+            className="font-medium p-1 text-4xl outline-none focus:bg-blue-100 focus:rounded-md px-1"
+            placeholder="Full Name"
+            key={`fullName`}
+            value={introductionDetails.name}
+            onChange={(e: any) => onHandleInputChange("name", e.target.value)}
+          />
+          <input
+            type="text"
+            className="mt-2 font-medium text-2xl outline-none focus:bg-blue-100 focus:rounded-md px-1"
+            placeholder="Professional Title"
+            key={"title"}
+            value={introductionDetails.title}
+            onChange={(e: any) => onHandleInputChange("title", e.target.value)}
+          />
+        </div>
         <input
           type="text"
-          className="font-medium text-4xl outline-none focus:bg-blue-100 focus:rounded-md px-1"
-          placeholder="Full Name"
-          key={`fullName`}
-          value={introductionDetails.name}
-          onChange={(e: any) => onHandleInputChange("name", e.target.value)}
-        />
-        <input
-          type="text"
-          className="mt-2 font-medium text-2xl outline-none focus:bg-blue-100 focus:rounded-md px-1"
-          placeholder="Professional Title"
-          key={"title"}
-          value={introductionDetails.title}
-          onChange={(e: any) => onHandleInputChange("title", e.target.value)}
-        />
-        <input
-          type="text"
-          className="mt-3 font-medium text-xl outline-none focus:bg-blue-100 focus:rounded-md px-1"
+          className="mt-3 flex flex-col font-medium text-base outline-none focus:bg-blue-100 focus:rounded-md px-1"
           placeholder="Short summary about yourself"
           key={"summary"}
           value={introductionDetails.summary}
