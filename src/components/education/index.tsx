@@ -38,7 +38,7 @@ function Education() {
   }
   return (
     <div className="flex flex-col p-3">
-      <h1 className=" uppercase">Education</h1>
+      <h1 className="font-bold uppercase">Education</h1>
       <div>
         <div>
           {educationDetails.map((education: any, index: number) => (

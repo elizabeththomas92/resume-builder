@@ -55,7 +55,7 @@ function Experience() {
 
   return (
     <div className="flex flex-col p-3">
-      <h1 className=" uppercase">Experience</h1>
+      <h1 className="font-bold uppercase">Experience</h1>
       {experiences?.map((experience: any, index: number) => (
         <div>
           <div className="group">

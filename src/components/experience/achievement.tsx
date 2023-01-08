@@ -9,9 +9,8 @@ function Achievement(props: { data: string[] }) {
 
   return (
     <div className="flex flex-col p-3">
-      <h1 className=" uppercase">Experience</h1>
       <div>
-        <div>Achievements</div>
+        <div className="font-semibold">Achievements</div>
         <div>
           {achievements?.map((achievement) => (
             <li

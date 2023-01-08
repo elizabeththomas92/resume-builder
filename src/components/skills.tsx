@@ -5,7 +5,7 @@ function Skills() {
   const [skills, setSkills] = React.useState(["New skill"]);
   return (
     <div className="flex flex-col p-3">
-      <h1>SKILLS</h1>
+      <h1 className="font-bold">SKILLS</h1>
       <div>
         <button
           onClick={() => setSkills([...skills, "New Skill"])}
