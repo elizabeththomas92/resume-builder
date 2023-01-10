@@ -46,7 +46,7 @@ function Education() {
               <div className="group">
                 <input
                   type="text"
-                  className="border-b-2 border-dashed font-medium outline-none focus:bg-blue-100 focus:rounded-md px-1"
+                  className="border-b-2 border-dashed font-medium w-full outline-none focus:bg-blue-100 focus:rounded-md px-1"
                   placeholder={"DEGREE"}
                   key={`degree-${index}`}
                   value={education.degree}
@@ -60,7 +60,7 @@ function Education() {
               </div>
               <input
                 type="text"
-                className="border-b-2 border-dashed font-medium outline-none focus:bg-blue-100 focus:rounded-md px-1"
+                className="border-b-2 border-dashed font-medium w-full outline-none focus:bg-blue-100 focus:rounded-md px-1"
                 placeholder={"UNIVERSITY"}
                 key={`university-${index}`}
                 value={education.university}
@@ -74,7 +74,7 @@ function Education() {
                 <input
                   placeholder="yyyy"
                   type="text"
-                  className="w-[44px] border-b-2 border-dashed focus:bg-blue-100 focus:rounded-md px-1 focus:outline-none"
+                  className="w-[50px] border-b-2 border-dashed focus:bg-blue-100 focus:rounded-md px-1 focus:outline-none"
                   maxLength={4}
                   onChange={(e: any) =>
                     onHandleInputChange("fromYear", e.target.value, index)
@@ -85,7 +85,7 @@ function Education() {
                 <input
                   placeholder="yyyy"
                   type="text"
-                  className="w-[44px] border-b-2 border-dashed focus:bg-blue-100 focus:rounded-md px-1 focus:outline-none"
+                  className="w-[50px] border-b-2 border-dashed focus:bg-blue-100 focus:rounded-md px-1 focus:outline-none"
                   maxLength={4}
                   onChange={(e: any) =>
                     onHandleInputChange("toYear", e.target.value, index)

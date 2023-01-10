@@ -44,10 +44,11 @@ function MainHeader() {
             onChange={(e: any) => onHandleInputChange("title", e.target.value)}
           />
         </div>
-        <input
-          type="text"
-          className="mt-3 flex flex-col font-medium text-base outline-none focus:bg-blue-100 focus:rounded-md px-1"
+        <textarea
+          className="mt-3 flex flex-col font-medium overflow-hidden text-base outline-none focus:bg-blue-100 focus:rounded-md px-1"
           placeholder="Short summary about yourself"
+          rows={2}
+          maxLength={100}
           key={"summary"}
           value={introductionDetails.summary}
           onChange={(e: any) => onHandleInputChange("summary", e.target.value)}
